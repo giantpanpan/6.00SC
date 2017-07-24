@@ -1,5 +1,4 @@
 #find the maximum value of goods with constraint of weight
-
 class Item(object):
     def __init__(self,n,v,w):
         self.name=n
@@ -67,7 +66,8 @@ def testGreedys(maxWeight=20):
     testGreedy(Items,maxWeight,weightInverse)
     print ('Use greedy by density to fill a knapsack of size', maxWeight)
     testGreedy(Items,maxWeight,density)
-
+ 
+#using the brute force
 def dToB(n,numDigits):
     assert type(n)==int and type(numDigits)==int\
            and n>=0 and n<2**numDigits
@@ -81,7 +81,7 @@ def dToB(n,numDigits):
 
 def genPset(Items):                                               #generate every possible of set of items. 2^6=36 sets in total
     numSubsets=2**len(Items)                                      #Use binary combination from [0 0 0 0 0 0] to [1 1 1 1 1 1]
-    templates=[]
+    templates=[]                                                  #irresprctive of whether they obey the constrain or over weighting
     for i in range(numSubsets):
         templates.append(dToB(i,len(Items)))
     print(templates)
