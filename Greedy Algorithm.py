@@ -1,3 +1,5 @@
+#find the maximum value of goods with constraint of weight
+
 class Item(object):
     def __init__(self,n,v,w):
         self.name=n
@@ -19,7 +21,7 @@ def buildItems():
     name=['clock','painting','radio','vase','book','computer']
     vals=[175,90,20,59,10,200]
     weights=[10,9,4,2,1,20]
-    Items=[]
+    Items=[]                                                      #Items= 6 * Item
     for i in range(len(vals)):
         Items.append(Item(name[i],vals[i],weights[i]))
     return Items
@@ -27,9 +29,8 @@ def buildItems():
 def greedy(Items,maxWeight,keyFcn):
     assert type(Items)==list and maxWeight>=0
     ItemCopy=sorted(Items,key=keyFcn,reverse=True)
-##    print("ItemCopy= ",ItemCopy)
-    result=[]
-    totalVal=0.0
+    result=[]                                                     #sort the list depends on value, weight or density
+    totalVal=0.0                                                  #reverse=True means the order of list starts from largest to smallest
     totalWeight=0.0
     i=0
     while totalWeight<maxWeight and i <len(Items):
@@ -78,8 +79,8 @@ def dToB(n,numDigits):
         bStr='0'+bStr
     return bStr
 
-def genPset(Items):
-    numSubsets=2**len(Items)
+def genPset(Items):                                               #generate every possible of set of items. 2^6=36 sets in total
+    numSubsets=2**len(Items)                                      #Use binary combination from [0 0 0 0 0 0] to [1 1 1 1 1 1]
     templates=[]
     for i in range(numSubsets):
         templates.append(dToB(i,len(Items)))
