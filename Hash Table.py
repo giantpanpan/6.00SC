@@ -1,3 +1,5 @@
+import random
+
 class intDict(object):
     ##Create an empty dictionary
     def __init__(self,numBuckets):
